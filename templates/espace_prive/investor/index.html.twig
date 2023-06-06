@@ -1,0 +1,109 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	<div class="main-wrapper">
+		{{ include('espace_prive/_header.html.twig')}}
+		<section class="section-box-2">
+        <div class="container-sst">
+          <div class="banner-hero banner-image-single">
+          <img class="img-banner" src="{{ asset('assets/images/banner/mentors.png') }}" alt="jobbox"><a class="btn-editor" href="#"></a></div>
+          <div class="box-company-profile">
+            <div class="row mt-10">
+              <div class="col-lg-9 col-md-9">
+                <h5 class="f-18">Find Investors </h5>
+                <p class="descriptioninv sal-animate" data-sal-delay="250" data-sal="slide-up" data-sal-duration="800">
+                Learning is a life-long journey that in fact we never find the terminate stop. Stop searching, enjoy the process.</p>
+              </div>
+              <div class="col-lg-12 col-md-12 text-end">
+                      <ol class="edu-breadcrumb d-flex justify-content-end liststyle mr-4">
+                            <li class="breadcrumb-item"><a href="/">Home</a></li>
+                            <li class="separator"><i class="ri-arrow-drop-right-line"></i></li>
+                             <li class="breadcrumb-item active" aria-current="page"> Investors</li>
+                        </ol>
+                </div>
+            </div>
+          </div>
+        </div>
+      </section>
+        <div class="edu-course-area eduvibe-home-one-course course-wrapper-1 bg-color-white">
+            <div class="wrapper">
+                <div class="container-sst-f eduvibe-animated-shape">
+                    <div class="row g-5 mt--50">
+                        <div class="col-md-4 p-5" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
+                           <img src="{{ asset('assets/images/banner/femme-blog.png') }}">
+                        </div>
+                        <div class="col-md-8 p-5" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
+                           <h6 class="titl-mentor">Connect with the investors</h6>
+                           <p class="des-mentor">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 
+                           et dolore magna aliqua. Ut enim ad minim veniam,
+                           quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 
+                           et dolore magna aliqua. Ut enim ad minim veniam,
+                           quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                        </div>
+                        
+                        <!-- End Single Card  -->
+                    </div>
+                </div>
+            </div>
+        </div>
+         <section class="section-box">
+			<div class="container-sst-f">
+                <div class="row mt--120 ventur-row">
+                    <div class="col-lg-6 ">
+                        <h1 class="f-venture">Discover the investors</h1>
+                    </div>
+                 
+                </div>
+            </div>
+        </section>
+       <div class="edu-course-area eduvibe-home-one-course course-wrapper-1 bg-color-white">
+            <div class="wrapper">
+                <div class="container-sst-f eduvibe-animated-shape">
+                    <div class="row g-5 mt--10">
+                    {% for investor in investors %}
+                        <div class="col-12 col-sm-12 col-xl-4 col-md-6" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
+                            <div class="edu-card card-type-2 investor radius-small">
+                                <div class="inner">
+                                    <div class="thumbnail row">
+                                        <div class="col-md-6">
+                                            <span class="invest">{{investor.field }}</span>
+                                            <span class="invest" style="color:#f95b16">{{investor.type }}</span>
+                                             <a href="{{investor.linkedin }}"><i class="icon-linkedin"></i></a>
+                                        </div>
+                                        <div class="col-md-6"><a href="">
+                                            <img class="w-100" style="    height: auto !important;" src="{{ asset('assets/images/investors/') }}{{investor.logo }}" alt="Course Meta">
+                                        </a></div>
+                                    </div>
+                                    <div class="content investor">
+                                        <div class="card-top">
+                                            <div class="author-meta">
+                                                <div class="author-thumb">
+                                                    <a href="">
+                                                        <span class="desc-invest">{{investor.title }}</span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                        <p  class="desc-investor">{{investor.description }}
+                                                </p>
+                                        <ul class="edu-meta meta-01">
+                                            <li><img class="icon icon-vent" src="{{ asset('assets/images/icons/tag.png') }}">
+												{{investor.category }}</li>
+                                            <li><img class="icon icon-vent" src="{{ asset('assets/images/icons/symbol.png') }}">{{investor.country }}</li>
+                                        </ul>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                       <!-- End Single Card  -->
+                    </div>
+                </div>
+            </div>
+            
+		{{ include('home/_partenaires.html.twig')}}
+        {{ include('espace_prive/_footer.html.twig')}}
+    </div>
+{% endblock %}

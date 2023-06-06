@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}She Starts Africa!{% endblock %}</title>
+        <link rel="icon" type="image/x-icon" href="{{ asset('assets/images/icons/favicon.png') }}">
+         {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+          <meta name="robots" content="noindex, follow" />
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- Favicon -->
+
+        {% block stylesheets %}
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+             <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+             <link href="//db.onlinewebfonts.com/c/8921c8dadf6978598db3bcee7021e845?family=Convoy" rel="stylesheet" type="text/css"/>
+            <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;400;500;600;700&display=swap" rel="stylesheet">
+            <link rel="stylesheet" href="{{ asset('assets/css/vendor/bootstrap.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('assets/css/vendor/remixicon.css') }}">
+            <link rel="stylesheet" href="{{ asset('assets/css/vendor/sst-font.css') }}">
+            <link rel="stylesheet" href="{{ asset('assets/css/vendor/magnifypopup.css') }}">
+            <link rel="stylesheet" href="{{ asset('assets/css/vendor/slick.css') }}">
+            <link rel="stylesheet" href="{{ asset('assets/css/vendor/odometer.css') }}">
+            <link rel="stylesheet" href="{{ asset('assets/css/vendor/lightbox.css') }}">
+            <link rel="stylesheet" href="{{ asset('assets/css/vendor/animation.css') }}">
+            <link rel="stylesheet" href="{{ asset('assets/css/vendor/jqueru-ui-min.css') }}">
+            <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+        {% endblock %}
+
+    </head>
+    <body>
+        {% block body %}
+        
+        {% endblock %}
+        
+    </body>
+    {% block javascripts %}
+             <script src="{{ asset('assets/js/vendor/modernizr.min.js') }}"></script>
+             
+             <!-- jQuery JS -->
+            <script src="{{ asset('assets/js/vendor/jquery.js') }}"></script>
+            <script src="{{ asset('assets/js/vendor/bootstrap.min.js') }}"></script>
+            <script src="{{ asset('assets/js/vendor/sal.min.js') }}"></script>
+            <script src="{{ asset('assets/js/vendor/magnifypopup.js') }}"></script>
+            <script src="{{ asset('assets/js/vendor/slick.js') }}"></script>
+            <script src="{{ asset('assets/js/vendor/countdown.js') }}"></script>
+            <script src="{{ asset('assets/js/vendor/jquery-appear.js') }}"></script>
+            <script src="{{ asset('assets/js/vendor/odometer.js') }}"></script>
+            <script src="{{ asset('assets/js/vendor/isotop.js') }}"></script>
+            <script src="{{ asset('assets/js/vendor/imageloaded.js') }}"></script>
+            <script src="{{ asset('assets/js/vendor/lightbox.js') }}"></script>
+            <script src="{{ asset('assets/js/vendor/wow.js') }}"></script>
+            <script src="{{ asset('assets/js/vendor/paralax.min.js') }}"></script>
+            <script src="{{ asset('assets/js/vendor/paralax-scroll.js') }}"></script>
+            <script src="{{ asset('assets/js/vendor/jquery-ui.js') }}"></script>
+            <script src="{{ asset('assets/js/vendor/tilt.jquery.min.js') }}"></script>
+            <!-- Main JS -->
+            <script src="{{ asset('assets/js/main.js') }}"></script>
+        {% endblock %}
+</html>

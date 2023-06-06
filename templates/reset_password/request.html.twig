@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}She Starts Africa{% endblock %}
+
+{% block body %}
+   <div class="main-wrapper">
+    {{ include('home/_header.html.twig')}}
+     <div class="container-sst container-sst d-flex justify-content-center">
+     <div class="col-md-6 reset">
+    {% for flash_error in app.flashes('reset_password_error') %}
+        <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+    {% endfor %}
+    <h3>Reset your password</h3>
+
+    {{ form_start(requestForm) }}
+        {{ form_row(requestForm.email) }}
+        <div>
+            <small>
+                Enter your email address and we will send you a
+                link to reset your password.
+            </small>
+        </div>
+<br><br>
+        <button class="btn edu-btn sal-animate ">Send password reset email</button>
+    {{ form_end(requestForm) }}
+    </div>
+    </div>
+    </div>
+
+    <style>
+    .col-md-6.reset {
+            margin-top: 61px;
+            /* border: 1px solid #e71117; */
+            padding: 30px;
+            box-shadow: 1px 1px 2px #bd8585fa;
+        }
+    </style>
+{% endblock %}

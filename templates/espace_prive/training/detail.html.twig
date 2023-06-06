@@ -1,0 +1,243 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	<div class="main-wrapper">
+		{{ include('espace_prive/_header.html.twig')}}
+        
+		<section class="section-box-2">
+        <div class="container-sst">
+          <div class="banner-hero banner-image-single">
+          <img class="img-banner" src="{{ asset('assets/images/banner/mentors.png') }}" alt="jobbox"><a class="btn-editor" href="#"></a></div>
+          <div class="box-company-profile">
+            <div class="row mt-10">
+              <div class="col-lg-9 col-md-9">
+                <h5 class="f-18"> {{ training.title }} </h5>
+              </div>
+              <div class="col-lg-12 col-md-12 text-end">
+                      <ol class="edu-breadcrumb d-flex justify-content-end liststyle mr-4">
+                          <li class="breadcrumb-item"><a href="/">Home</a></li>
+                          <li class="separator"><i class="ri-arrow-drop-right-line"></i></li>
+                          <li class="breadcrumb-item active" aria-current="page"> Trainings</li>
+                          <li class="separator"><i class="ri-arrow-drop-right-line"></i></li>
+                          <li class="breadcrumb-item active" aria-current="page"> {{ training.title }}</li>
+                      </ol>
+                </div>
+            </div>
+          </div>
+        </div>
+      </section>
+        <section class="section-box">
+		   <div class="container-sst-f">
+                <div class="row mt--60 ventur-row-detail">
+                    <div class="col-lg-9 p-5">
+                        <h1 class="f-venture">{{ training.title }}</h1>
+                        <p class="descr-venture">
+                             {{ training.description }}
+                        </p>
+
+                        <div class="teamss mt--60">
+                          <a class="zoom-j" href="{{ training.link }}">Join Zoom</a>
+                          <a class="browse-pdf" href="{{ training.course }}">Course PDF</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 vent-right text-center">
+                       
+                        <div class="bloc-detail">
+                            <div class="bloc-1">
+                               <div class="col-md-6"> 
+                               <img class="icon icon-vents" src="{{ asset('assets/images/icons/caland.png') }}">
+                                <p class="descrpt">Start date <p class="bloc-p">{{ training.dateStart|date('d-m-Y') }}</p></p>
+                               </div>          
+                            <div class="col-md-6">
+                             <img class="icon icon-vents" src="{{ asset('assets/images/icons/check.png') }}">
+                                <p class="descrpt">End date<p class="bloc-p">{{ training.dateEnd|date('d-m-Y') }}</p></p></div></div>
+                            <div class=" bloc-1">
+                            <div class="col-md-6"> <img class="icon icon-vents" src="{{ asset('assets/images/icons/symbl.png') }}">
+                                <p class="descrpt">Field:<p class="bloc-p">{{ training.type }}</p></p></div>
+                            
+                            <div class="col-md-6"> <img class="icon icon-vents" src="{{ asset('assets/images/icons/session.png') }}">
+                                <p class="descrpt">Sessions:<p class="bloc-p">{{ training.session }}</p></p></div>
+                            </div>
+                        </div>
+                        <div class="ask mt--50">
+                        <div class="quote-icon quote-search">
+                                <button class="white-box-icon search-trigger header-search">Register</button>
+                            </div>   
+                        </div>
+                    <div class="edu-search-popup">
+                        <div class="close-button">
+                            <button class="close-trigger"><i class="ri-close-line"></i></button>
+                        </div>
+                        <div class="inner">
+                            {{ form_start(form) }}
+                                <h5 style="font-size: 34px;color: #fff;font-family: 'Convey-Bold';">Register for this training </h5>
+                                <button type="submit" class="btn btn-training">ok</button>
+                            {{ form_end(form) }}
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        {% if(user.programme) == 'expert' %}
+       
+        <section class="section-box-2">
+        <div class="container-sst">
+        <h5>Course attendance list</h5>
+         <form >
+            <table class="table table-striped">
+            <thead>
+                <tr>
+                <th scope="col">Firstname</th>
+                <th scope="col">Lastname</th>
+                <th scope="col">Email</th>
+                <th scope="col">Position</th>
+                <th scope="col">Date</th>
+                <th scope="col">Attendancy</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for attendance in attendances %}
+                <tr>
+                <th scope="row">{{ attendance.username }}</th>
+                <td>{{ attendance.userlastname }}</td>
+                <td>{{ attendance.useremail }}</td>
+                 <td>{{ attendance.position }}</td>
+               <td>{% set datArray = attendance.date %}
+               {% for dat in datArray %}
+               {{ dat|date('Y-m-d') }}<hr>
+                {% endfor %}
+                </td>
+               <td>{% set attArray = attendance.attendancy %}
+                 {% for att in attArray %}
+                    {{ att }}<hr>
+                 {% endfor %}
+               </td>
+                 
+                </tr>
+                 {% endfor %}
+               </tbody>
+             </table>
+           
+            </form>
+            </div>
+        </div>
+
+        <section class="section-box-2">
+        <div class="container-sst">
+        <h5>Attendance record</h5>
+        <div id="attendances">
+         <form id="">
+            <table class="table table-striped">
+            <thead>
+                <tr>
+                <th scope="col">Firstname</th>
+                <th scope="col">Lastname</th>
+                <th scope="col">Email</th>
+                <th scope="col">Position</th>
+                <th scope="col">Date</th>
+                <th scope="col">Attendancy</th>
+               
+                </tr>
+            </thead>
+            <tbody>
+                {% for course in courses%}
+                <tr>
+                <th scope="row">{{ course.user.firstname }}</th>
+                <td>{{ course.user.lastname }}</td>
+                <td>{{ course.user.email }}</td>
+                <td>{{ course.user.programme }}</td>
+               
+                  <td><input type="date" name="date-{{ course.user.id }}"></td>
+                  <td><select id="attends" name="attends-{{ course.user.id }}">
+                        <option value="present">present</option>
+                        <option value="absent">absent</option>
+                        </select></td>
+                </tr>
+                 <input type="hidden" name="id-user-{{ course.user.id }}=" value="{{ course.user.id }}">
+                 {% endfor %}
+               </tbody>
+             </table>
+             <input type="hidden" name="id-training" value="{{ training.id }}">
+            
+            </form>
+            </div>
+            <div class="col-md-2"><button class="btn btn-danger" id="submit-btn">Save</div>
+            </div>
+            </div>
+          {% endif %}
+	    {{ include('home/_partenaires.html.twig')}}
+        {{ include('espace_prive/_footer.html.twig')}}
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+   <script>
+   // Sélectionner le bouton de soumission
+var submitBtn = document.getElementById('submitBtn');
+
+// Ajouter un écouteur d'événements sur le bouton de soumission
+ $('#submit-btn').on('click', function() {
+    // Récupérer le tableau HTML
+    var myTable = document.getElementById('myTable');
+
+    // Récupérer toutes les lignes du tableau sauf la première (les en-têtes)
+    var rows = myTable.querySelectorAll('tr:not(:first-child)');
+
+    // Créer un tableau pour stocker les données
+    var data = [];
+
+    // Boucler sur chaque ligne et extraire les valeurs des champs
+    rows.forEach(function(row) {
+        var date = row.querySelector('input[name^="date-"]').value;
+        var attends = row.querySelector('input[name^="attends-"]').value;
+        var userId = row.querySelector('input[name^="id-user-"]').value;
+
+        // Ajouter les valeurs extraites au tableau de données
+        data.push({
+            date: date,
+            attends: attends,
+            userId: userId
+        });
+    });
+
+    // Envoyer les données via AJAX
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', '/my-controller');
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.onload = function() {
+        if (xhr.status === 200) {
+            console.log(xhr.responseText);
+        } else {
+            console.log('Une erreur s\'est produite');
+        }
+    };
+    xhr.send(JSON.stringify(data));
+});
+
+
+        jQuery(document).ready(function() {
+            $('#submit-btn').on('click', function() {
+              alert('ok')
+                $.ajax({
+                    url: "{{ path('ajax_insert') }}",
+                    type: "POST",
+                    dataType: "json",
+                    data: {form: $('#attendances form').serialize()},
+                    success: function(response) {
+                        alert(response.message);
+                    },
+                    error: function(xhr, status, error) {
+                        console.log(xhr.responseText);
+                    }
+                });
+            });
+        });
+    </script>
+    <style>
+    button#submit-btn {
+        font-weight: 700;
+        font-size: 19px;
+        padding: 10px 30px 10px 30px;
+    }
+    </style>
+{% endblock %}

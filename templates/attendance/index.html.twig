@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}She Starts Africa{% endblock %}
+
+{% block body %}
+    <h1>Attendance index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Username</th>
+                <th>Userlastname</th>
+                <th>Useremail</th>
+                <th>Position</th>
+                <th>Date</th>
+                <th>Attendancy</th>
+                <th>Note</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for attendance in attendances %}
+            <tr>
+                <td>{{ attendance.id }}</td>
+                <td>{{ attendance.username }}</td>
+                <td>{{ attendance.userlastname }}</td>
+                <td>{{ attendance.useremail }}</td>
+                <td>{{ attendance.position }}</td>
+                <td>{{ attendance.date ? attendance.date|join(', ') : '' }}</td>
+                <td>{{ attendance.attendancy ? attendance.attendancy|join(', ') : '' }}</td>
+                <td>{{ attendance.note }}</td>
+                <td>
+                    <a href="{{ path('app_attendance_show', {'id': attendance.id}) }}">show</a>
+                    <a href="{{ path('app_attendance_edit', {'id': attendance.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_attendance_new') }}">Create new</a>
+{% endblock %}

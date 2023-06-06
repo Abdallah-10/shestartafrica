@@ -1,0 +1,267 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}SheStartsAfrica
+{% endblock %}
+
+{% block body %}
+	<div class="main-wrapper">
+		{{ include('home/_header.html.twig')}}
+		<section class="section-box-2">
+			<div class="container-sst">
+				<div class="banner-hero banner-image-single">
+					<img class="img-banner" src="{{ asset('assets/images/banner/discover.png') }}" alt="jobbox"><a class="btn-editor" href="#"></a>
+				</div>
+				<div class="box-company-profile">
+					<div class="row mt-10">
+						<div class="col-lg-9 col-md-9">
+							<h5 class="f-18">Discover how life-changing impact is made</h5>
+						</div>
+						<div class="col-lg-12 col-md-12 text-end">
+							<ol class="edu-breadcrumb d-flex justify-content-end liststyle mr-4">
+								<li class="breadcrumb-item">
+									<a href="/">Home</a>
+								</li>
+								<li class="separator">
+									<i class="ri-arrow-drop-right-line"></i>
+								</li>
+								<li class="breadcrumb-item active" aria-current="page">Discover</li>
+							</ol>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<div class="edu-blog-area sst-home-one-blog">
+			<div class="shape-dot-wrapper shape-wrapper d-xl-block d-none">
+				<div class="shape-image shape-image-4">
+					<img class="turn-img" src="assets/images/shapes/shape-16-01.png" alt="Shape Thumb">
+				</div>
+			</div>
+			<div class="container-sst" >
+				<h1 class="title-sector">Top Sectors</h1>
+				<div class="row g-5 mt--30 top-sectors">
+                <div class="card-sector" data="All" style='border-bottom:2px solid {{ random(['#FFAEBC','#2E8BC0', '#A0E7E5', '#B4F8C8', '#FBE7C6','#0C2D48']) }}'>
+					    <img class="icon-sector" src="{{ asset('assets/images/icons/vector.png')}}">
+					    <p class="sector">All</p>
+                    </div>
+                {% for venture in sectors %}
+                    <div class="card-sector" data="{{venture.sector}}" style='border-bottom:2px solid {{ random(['#FFAEBC','#2E8BC0', '#A0E7E5', '#B4F8C8', '#FBE7C6','#0C2D48']) }}'>
+					    <img class="icon-sector" src="{{ asset('assets/images/icons/vector.png')}}">
+					    <p class="sector">{{venture.sector}}</p>
+                    </div>
+                     {% endfor %}
+				</div>
+			</div>
+            <div class="container-sst" >
+				<h1 class="title-sector">Top Countries</h1>
+				<div class="row g-5 mt--30 top-sectors">
+                <div class="card-country" data="All">
+					    <img class="icon-flag" src="{{ asset('assets/images/ventures/flag-icon.jpg')}}">
+					    <p class="country">All</p>
+                    </div>
+                {% for venture in country %}
+                    <div class="card-country" data="{{venture.country}}">
+					    <img class="icon-flag" src="{{ asset('assets/images/ventures/flag-icon.jpg')}}">
+					    <p class="country">{{venture.country}}</p>
+                    </div>
+                  {% endfor %}
+				</div>
+			</div>
+
+			<div class="container-sst ventor">
+				<div class="row g-5 align-items-center">
+					<div class="col-lg-12 col-md-12 col-12 ">
+						<div class="section-title text-start" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
+							<h3 class="title">Our Ventures</h3>
+						</div>
+					</div>
+				</div>
+
+				<div class="row g-5 mt--30" id="venture-list">
+                  {% include 'ventures/_venture_list.html.twig' with {'ventures': ventures} %}
+              	</div>
+
+			</div>
+			<div class="container-sst">
+				<div class="row g-5 align-items-center">
+					<div class="col-lg-6 col-md-6 col-12">
+						<div class="section-title text-start" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
+							<h3 class="title">Investors and partners</h3>
+						</div>
+					</div>
+				</div>
+
+
+			<div class="eedu-testimonial-area sst-home-two-testimonial bg-color-white testimonial-card-box-bg edu-section-gap position-relative bg-image">
+                <div class="edu-testimonial-activation testimonial-item-3 mt--40 edu-slick-button">
+                {% for partner in partners %}
+                    <!-- Start Tastimonial Card  -->
+                    <div class="testimonial-card-box">
+                        <div class="inner">
+                            <div class="client-info">
+                                <div class="thumbnail">
+                                    <img src="{{ asset('assets/images/investors/')}}{{ partner.logo }}" alt="Client Images">
+                                </div>
+                                <div class="content">
+                                    <span class="designation">{{ partner.field }}</span>
+                                </div>
+                            </div>
+							<h6 class="title" style="font-weight: 700;">{{ partner.title }}</h6>                            
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+              </div>
+			</div>
+           <div class="container-sst">
+				<div class="row g-5 align-items-start">
+					<div class="col-lg-12 col-md-12 col-12">
+						<div class="section-title text-start" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
+							<h3 class="title">Mentors</h3>
+						</div>
+					</div>
+				</div>
+
+			    <div class="eedu-testimonial-area sst-home-two-testimonial bg-color-white testimonial-card-box-bg edu-section-gap position-relative bg-image">
+                   <div class="edu-testimonial-activation testimonial-item-3 mt--40 edu-slick-button">
+                    {% for mentor in mentors %}
+                    <!-- Start Tastimonial Card  -->
+                   <div class="testimonial-card-box">
+                        <div class="inner">
+                            <div class="client-infom">
+                                <div class="thumbnail">
+                                    <img src="{{ asset('assets/images/mentors/')}}{{ mentor.cover }}" alt="Client Images">
+                                </div>
+                                <div class="content">
+                                    <h6 class="title">{{ mentor.name }}</h6>
+                                    <span class="designation">{{ mentor.speciality }}</span>
+                                </div>
+                            </div>                            
+                        </div>
+                    </div>
+                    <!-- End Tastimonial Card  -->
+                    {% endfor %}
+                </div>
+              </div>
+			 </div>
+			</div>
+			
+			<div class="sst-home-five-course slider-dots edu-course-area edu-section-gap bg-image">
+            <div class="container-sst sst-animated-shape">
+                <div class="row g-5">
+                    <div class="col-lg-6 col-md-6 mb--20">
+                        <div class="section-title text-start" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
+                            <h3 class="title">Events</h3>
+                        </div>
+                    </div>
+                   
+                </div>
+                <div class="row g-5 mt--10">
+                    <div class="col-lg-12">
+                        <div class="slick-activation-wrapper course-activation-3 edu-slick-button">
+							{% for event in events %}
+                            <!-- Start Single Card  -->
+                            <div class="single-slick-card">
+                                <div class="edu-card card-type-3 radius-small">
+                                    <div class="inner">
+                                        <div class="thumbnail">
+                                            <a href="/events/{{ event.slug }}">
+                                                <img class="w-100" src="{{ asset('assets/images/events/') }}{{ event.cover }}" alt="Course Thumb">
+                                            </a>
+                                        </div>
+                                        <div class="content">
+                                            
+                                            <h6 class="title" style="text-align:start"><a href="/events/{{ event.slug }}">{{ event.title }}</a></h6>
+                                            
+                                            <div class="card-bottom-event">
+                                                <ul class="edu-meta meta-event">
+                                                <li>{{ event.DateStart|date('d/m/Y') }}</li>
+                                                <li> {{ event.local }}</li>
+                                            </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End Single Card  -->
+							{% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+		</div>
+
+		{{ include('home/_partenaires.html.twig')}}
+		{{ include('home/_footer.html.twig')}}
+
+<script>
+            const country = document.querySelectorAll(".card-country");
+            const options = document.querySelectorAll(".card-sector");
+            
+            country.forEach((option) =>
+                option.addEventListener("click", function () {
+                    
+                   var sector =  $(".card-sector.active").attr('data');
+				   jQuery(this).addClass('active');
+                    $('.card-country').not(this).removeClass('active');
+                   var country = jQuery(this).attr('data');
+                    $('html,body').animate({
+                    scrollTop: $(".ventor").offset().top},
+                    'slow');
+                   
+                    $.ajax({
+                        type:'POST',
+                        url: '{{ url('app_discover') }}',
+                        data:{ sector: sector,country: country },
+                        
+                        success:function(data){
+                        $('#venture-list').addClass('ajaxio')
+                         $('#venture-list').html(data.content);
+                        },
+                        error: function(data){
+                            console.log("error");
+                        
+                        }
+                    });
+                })
+            );
+            
+            options.forEach((option) =>
+                option.addEventListener("click", function () {
+                    
+                   var sector = jQuery(this).attr('data');
+				   jQuery(this).addClass('active');
+                   $('.card-sector').not(this).removeClass('active');
+                   var country = $(".card-country.active").attr('data');
+                    $('html,body').animate({
+                    scrollTop: $(".card-sector").offset().top},
+                    'slow');
+                   
+                    $.ajax({
+                        type:'POST',
+                        url: '{{ url('app_discover') }}',
+                        data:{ sector: sector,country: country },
+                        
+                        success:function(data){
+                           $('#venture-list').html(data.content); 
+                        
+                        },
+                        error: function(data){
+                            console.log("error");
+                        
+                        }
+                    });
+                })
+            );
+
+        
+        </script>
+    <style>
+    .ajaxio{
+        margin-top:-30px !important;
+        padding-bottom:50px !important;
+    }
+    </style>
+
+	{% endblock %}

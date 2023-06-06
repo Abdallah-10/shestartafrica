@@ -1,0 +1,77 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	<div class="main-wrapper">
+		{{ include('home/_header.html.twig')}}
+        
+		<section class="section-box-2">
+        <div class="container-sst">
+          <div class="banner-hero banner-image-single">
+          <img class="img-banner" src="{{ asset('assets/images/banner/mentors.png') }}" alt="jobbox"><a class="btn-editor" href="#"></a></div>
+          <div class="box-company-profile">
+            <div class="row mt-10">
+              <div class="col-lg-9 col-md-9">
+                <h5 class="f-18"> {{ events.title }} </h5>
+              </div>
+              <div class="col-lg-12 col-md-12 text-end">
+                      <ol class="edu-breadcrumb d-flex justify-content-end liststyle mr-4">
+                          <li class="breadcrumb-item"><a href="/">Home</a></li>
+                          <li class="separator"><i class="ri-arrow-drop-right-line"></i></li>
+                          <li class="breadcrumb-item active" aria-current="page"> events</li>
+                          <li class="separator"><i class="ri-arrow-drop-right-line"></i></li>
+                          <li class="breadcrumb-item active" aria-current="page"> {{ events.title }}</li>
+                      </ol>
+                </div>
+            </div>
+          </div>
+        </div>
+      </section>
+        <section class="section-box">
+			      <div class="container-sst-f">
+                <div class="row mt--60 ventur-row-detail">
+                    <div class="col-lg-9 p-5">
+                        <h1 class="f-events">{{ events.title }}</h1>
+                        <p class="descr-events">
+                             {{ events.description }}
+                        </p>
+                        
+                        <div class="team mt--60">
+                         
+                            <div class="reseaux">
+                            <div class="price old-price mt--40">                                              
+                            <a href="#"><i class="icon-linkedin mentor"></i></a>
+                            <a href="#"><i class="icon-Mail"></i></a>
+                          </div>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 vent-right text-center mt--50">
+                    
+                        <div class="bloc-detail">
+                            <div class="bloc-1">
+                               <div class="col-md-6"> 
+                               <img class="icon icon-vents" src="{{ asset('assets/images/icons/caland.png') }}">
+                                <p class="descrpt">Start date: <p class="bloc-p">01/05/2021</p></p>
+                               </div>          
+                            <div class="col-md-6">
+                             <img class="icon icon-vents" src="{{ asset('assets/images/icons/team.png') }}">
+                                <p class="descrpt">End date:<p class="bloc-p">01/05/2021</p></p></div></div>
+                            <div class=" bloc-1">
+                            <div class="col-md-6"> <img class="icon icon-vents" src="{{ asset('assets/images/icons/flags.png') }}">
+                                <p class="descrpt">City :<p class="bloc-p">Ghana</p></p></div>
+                            
+                            <div class="col-md-6"> <img class="icon icon-vents" src="{{ asset('assets/images/icons/symbl.png') }}">
+                                <p class="descrpt">Category :<p class="bloc-p">Agriculture</p></p></div>
+                            </div>
+                        </div>
+                       
+                        
+                    </div>
+                </div>
+            </div>
+
+        </section>
+	      {{ include('home/_partenaires.html.twig')}}
+        {{ include('home/_footer.html.twig')}}
+    </div>
+{% endblock %}

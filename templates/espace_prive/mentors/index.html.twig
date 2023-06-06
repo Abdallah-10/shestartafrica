@@ -1,0 +1,125 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	<div class="main-wrapper">
+		{{ include('espace_prive/_header.html.twig')}}
+		<section class="section-box-2">
+        <div class="container-sst">
+          <div class="banner-hero banner-image-single">
+          <img class="img-banner" src="{{ asset('assets/images/banner/mentors.png') }}" alt="jobbox"><a class="btn-editor" href="#"></a></div>
+          <div class="box-company-profile">
+            <div class="row mt-10">
+              <div class="col-lg-9 col-md-9">
+                <h5 class="f-18">Our mentors</h5>
+              </div>
+              <div class="col-lg-12 col-md-12 text-end">
+                      <ol class="edu-breadcrumb d-flex justify-content-end liststyle mr-4">
+                            <li class="breadcrumb-item"><a href="/">Home</a></li>
+                            <li class="separator"><i class="ri-arrow-drop-right-line"></i></li>
+                             <li class="breadcrumb-item active" aria-current="page"> Mentors</li>
+                        </ol>
+                </div>
+            </div>
+          </div>
+        </div>
+      </section>
+        <div class="edu-course-area eduvibe-home-one-course course-wrapper-1 bg-color-white">
+            <div class="wrapper">
+                <div class="container-sst-f eduvibe-animated-shape">
+                    <div class="row g-5 mt--50">
+                        <!-- Start Single Card  -->
+                        <div class="col-md-8" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
+                           <h6 class="titl-mentor">Find a mentor to help you grow and scale your startup</h6>
+                           <p class="des-mentor">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 
+                           et dolore magna aliqua. Ut enim ad minim veniam,
+                           quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 
+                           et dolore magna aliqua. Ut enim ad minim veniam,
+                           quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                        </div>
+                        <div class="col-md-4 p-5" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
+                           <img src="{{ asset('assets/images/banner/femme-blog.png') }}">
+                        </div>
+                        <!-- End Single Card  -->
+                    </div>
+                </div>
+            </div>
+        </div>
+         
+        <div class="edu-course-area eduvibe-home-one-course course-wrapper-1 bg-color-white">
+            <div class="wrapper">
+                <div class="container-sst-f eduvibe-animated-shape">
+                    <div class="row g-5 mt--10">
+                        <div class="col-lg-12">
+                        <div class="">
+                            <ul class="edu-course-tab nav nav-tabs" id="myTab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link active" id="overview-tab" data-bs-toggle="tab" data-bs-target="#overview" type="button" role="tab" aria-controls="overview" aria-selected="true">All</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="curriculum-tab" data-bs-toggle="tab" data-bs-target="#curriculum" type="button" role="tab" aria-controls="curriculum" aria-selected="false">Curriculum</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="instructor-tab" data-bs-toggle="tab" data-bs-target="#instructor" type="button" role="tab" aria-controls="instructor" aria-selected="false">Instructor</button>
+                                </li>
+
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="review-tab" data-bs-toggle="tab" data-bs-target="#review" type="button" role="tab" aria-controls="review" aria-selected="false">Reviews</button>
+                                </li>
+                            </ul>
+
+                            <div class="tab-content" id="myTabContent">
+                                <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview-tab">
+                                    <div class="course-tab-content">
+                                        <div class="row g-5 mt--10">
+                                        {% for mentor in mentors %}
+                                            <div class="col-12 col-sm-12 col-xl-4 col-md-6" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
+                                                <div class="card-box mentors">
+                                                    <div class="inner mentors">
+                                                        <div class="client-infom mentors row" >
+                                                            <div class="thumbnail mentors col-md-4 p-0">
+                                                                <img src="{{ asset('assets/images/mentors/') }}{{ mentor.cover }}" alt="Client Images">
+                                                            </div>
+                                                            <div class="content mentors col-md-8 ps-4">
+                                                                <h6 class="title-mentor">{{ mentor.name }}</h6>
+                                                                <span class="designation-mentor">{{ mentor.occupation }}</span>
+                                                            
+                                                                <div class="price-list price-style-01">
+                                                                    <div class="price old-price mt-4">                                              
+                                                                    <a href="{{ mentor.linkedin }}"><i class="icon-linkedin mentor"></i></a>
+                                                                    <a href="{{ mentor.mail }}"><i class="icon-Mail"></i></a>
+                                                                    <a href="/espace/prive/mentors/{{ mentor.slug }}" class="link-mentor">Learn More <i class="icon-arrow-right-line-right ms-3"></i></a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div> 
+                                                                                
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="curriculum" role="tabpanel" aria-labelledby="curriculum-tab">
+                                    <div class="course-tab-content">
+                                        <div class="edu-accordion-02" id="accordionExample1">
+                                            dfqss
+                                        </div>
+                                    </div>
+                                </div>
+
+                               
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+            
+		{{ include('home/_partenaires.html.twig')}}
+        {{ include('espace_prive/_footer.html.twig')}}
+    </div>
+{% endblock %}

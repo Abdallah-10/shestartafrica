@@ -1,0 +1,105 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	<div class="main-wrapper">
+		{{ include('espace_prive/_header.html.twig')}}
+        
+		<section class="section-box-2">
+        <div class="container-sst">
+          <div class="banner-mentor banner-image-single mt--140">
+          <div class="box-mentor-profile">
+            <div class="row mt-10">
+              <div class="col-lg-9 col-md-9">
+                <h3 class="f-18"> {{ mentor.name }} </h3>
+                <p>{{ mentor.description }}</p>
+              </div>
+              <div class="col-lg-3 col-md-3 text-end">
+                   <img class="img-mentor" src="{{ asset('assets/images/mentors/') }}{{ mentor.cover }} " alt="jobbox">
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+        <section class="section-box">
+			      <div class="container-sst-f">
+                <div class="row mt--60 ventur-row-detail">
+                    <div class="col-lg-9 p-5">
+                       
+                    <h4>Previous mentorship programs</h4>
+                        <div class="team mt--60">
+                        {% for prog in mentor.programs %}
+                            <div class="col-12 col-sm-12 col-xl-5 col-md-5 mb-5" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
+                                <div class="card-box mentors">
+                                    <div class="inner mentors">
+                                        <div class="client-infom mentors row" >
+                                            <div class="thumbnail mentors col-md-4 p-0">
+                                                <img src="https://via.placeholder.com/1328x720.png" alt="Client Images">
+                                            </div>
+                                            <div class="content mentors col-md-8 ps-4">
+                                                <p class="designation-mentor">{{ prog }}</p>
+                                            </div>
+                                        </div> 
+                                                                
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+							</div>
+                    </div>
+                    <div class="col-lg-3 vent-right text-center">
+                       
+                        <div class="bloc-detail">
+                            <div class="bloc-1">
+                               <div class="col-md-6"> 
+                               <img class="icon icon-vents" src="{{ asset('assets/images/icons/caland.png') }}">
+                                <p class="descrpt">Occupation: <p class="bloc-p">{{ mentor.occupation }} </p></p>
+                               </div>          
+                            <div class="col-md-6">
+                              <img class="icon icon-vents" src="{{ asset('assets/images/icons/flags.png') }}">
+                                <p class="descrpt">Localisation:<p class="bloc-p">{{ mentor.localisation }}</p></p></div></div>
+                            <div class=" bloc-1">
+                            <div class="col-md-12">  <img class="icon icon-vents" src="{{ asset('assets/images/icons/symbl.png') }}">
+                                <p class="descrpt">Skills:<p class="bloc-p">{{ mentor.skills|join(' , ') }}</p></p></div>
+                            </div>
+                        </div>
+                        <div class="ask mt--50">
+                       
+                        <div class="quote-icon quote-search">
+                                <button class="white-box-icon search-trigger header-search">Ask for availability</button>
+                            </div>
+                        </div>
+                        <div class="reseaux">
+                          <div class="price old-price mt--40">                                              
+                            <a href="#"><i class="icon-linkedin mentor"></i></a>
+                            <a href="#"><i class="icon-Mail"></i></a>
+                          </div>
+                        </div>
+                       
+                        <div class="edu-search-popup">
+                            <div class="close-button">
+                                <button class="close-trigger"><i class="ri-close-line"></i></button>
+                            </div>
+                            <div class="inner">
+                                {{ form_start(form) }}
+                                    <h5 style="font-size: 34px;color: #fff;font-family: 'Convey-Bold';">Your contact request has been sent </h5>
+                                    <button type="submit" class="btn btn-training">ok</button>
+                                {{ form_end(form) }}
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+
+        </section>
+		<style>
+		p.designation-mentor {
+    font-size: 20px;
+    font-weight: 600;
+    margin-top: 20px;
+}
+		</style>
+	      {{ include('home/_partenaires.html.twig')}}
+        {{ include('espace_prive/_footer.html.twig')}}
+    </div>
+{% endblock %}

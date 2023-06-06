@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+{% block title %}She Starts Africa{% endblock %}
+
+{% block body %}
+   <div class="main-wrapper">
+    {{ include('home/_header.html.twig')}}
+     <div class="container-sst container-sst d-flex justify-content-center">
+     <div class="col-md-6 reset">
+    <h1>Reset your password</h1>
+
+    {{ form_start(resetForm) }}
+        {{ form_row(resetForm.plainPassword) }}
+        <button class="btn btn-primary">Reset password</button>
+    {{ form_end(resetForm) }}
+  </div>
+  </div>
+  </div>
+
+      <style>
+    .col-md-6.reset {
+            margin-top: 61px;
+            /* border: 1px solid #e71117; */
+            padding: 30px;
+            box-shadow: 1px 1px 2px #bd8585fa;
+        }
+    </style>
+{% endblock %}

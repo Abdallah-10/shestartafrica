@@ -1,0 +1,40 @@
+{% for venture in ventures %}
+        
+                        <!-- Start Single Card  -->
+                        <div class="col-12 col-sm-12 col-xl-4 col-md-6" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800" style="opacity: 1;">
+                            <div class="edu-card card-type-2 ventures radius-small">
+                                <div class="inner">
+                                    <div class="thumbnail">
+                                        <a {% if app.user %} href="/espace/prive/venture/{{ venture.slug }}" {% endif %}>
+                                            <img class="w-100" src="{{ asset('assets/images/ventures/')}}{{ venture.cover }}" alt="Course Meta">
+                                        </a>
+                                    </div>
+                                    <div class="content ventures">
+                                        <div class="card-top">
+                                            <div class="author-meta">
+                                                <div class="author-thumb">
+                                                    <a {% if app.user %} href="/espace/prive/venture/{{ venture.slug }}" {% endif %}>
+                                                        <span class="venture-title">{{ venture.title }}</span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h6 class="desc-vent">{{ venture.description|slice(0, 80) ~ '...' }}</h6>
+                                        <ul class="edu-meta meta-01">
+                                            <li><img class="icon icon-vent" src="{{ asset('assets/images/icons/tag.png') }}">
+												{{ venture.sector }}</li>
+                                            <li><img class="icon icon-vent" src="{{ asset('assets/images/icons/symbol.png') }}">{{ venture.country }}</li>
+                                        </ul>
+                                        <ul class="edu-meta meta-01">
+                                            <li><img class="icon icon-vent" src="{{ asset('assets/images/icons/calendar.png') }}">
+												{{ venture.years|date('Y') }}</li>
+                                            <li><img class="icon icon-vent" src="{{ asset('assets/images/icons/group.png') }}">{{ venture.founder }} Founders</li>
+                                        </ul>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+
+            

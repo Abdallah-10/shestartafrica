@@ -1,0 +1,58 @@
+<header class="edu-header  header-sticky header-transparent header-style-2 header-default ">
+            <div class="row align-items-center">
+                <div class="col-lg-2 col-xl-3 col-md-2 col-2">
+                    <div class="logo text-lefter">
+                        <a href="/espace/prive/home">
+                            <img class="logo-light" src="{{ asset('assets/images/logo/rectangle3.png') }}" alt="Site Logo">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-8 col-sm-8 col-12">
+                    <nav class="mainmenu-nav d-lg-block">
+                        <ul class="mainmenu">
+                          <li class="has"><a href="/espace/prive/home">Home</a> </li>
+                           <li class="has"><a href="/espace/prive/venture/">Ventures</a> </li>
+                           <li class="has"><a href="/espace/prive/training">Training</a> </li>
+                           <li class="has"><a href="/espace/prive/mentors">Mentors</a> </li>
+                           <li class="has"><a href="/espace/prive/investor">Investors</a> </li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="col-lg-4 col-xl-3 col-md-2 col-2">
+                    <div class="header-right d-flex justify-content">
+                        <div class="header-menu-bar">
+                         {% if app.user %}
+                         <div class="header-right d-flex justify-content-end">
+                                <div class="header-menu-bar">
+                                    <div class="dropdown d-inline-block">
+                                    <button type="button" class="btn header-item bg-soft-light border-start border-end" id="page-header-user-dropdown"
+                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <span class=" d-xl-inline-block ms-1 fw-medium"><i class="ri-user-line"></i></span>
+                                        <i class="mdi mdi-chevron-down d-xl-inline-block"></i>
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-end">
+                                        {% if 'ROLE_ADMIN' in app.user.roles %} 
+                                        <a class="dropdown-item" href="/admin" style="background-color: bisque;"><i class="icon-file-list-4-line font-size-16 align-middle me-1"></i> Dashboard</a>
+                                        {% endif %}
+                                        <a class="dropdown-item" href="/"><i class="user-add-line font-size-16 align-middle me-1"></i> Public space</a>
+                                        <a class="dropdown-item" href="/espace/prive/profil"><i class="user-add-line font-size-16 align-middle me-1"></i> My account</a>
+                                        <a class="dropdown-item" href="/logout"><i class="mdi mdi-logout font-size-16 align-middle me-1"></i>Sign out</a>
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
+                          {% else %}  
+                           <div class="quote-icon quote-user d-none d-md-block ml--15 ml_sm--5">
+                                <a class="edu-btn btn-medium left-icon header-button" href="/login">My account</a>
+                            </div>
+                            <div class="quote-icon quote-user d-block d-md-none ml--15 ml_sm--5">
+                                <a class="white-box-icon" href="/login"><i class="ri-user-line"></i></a>
+                            </div>
+                          {% endif %}
+                        </div>
+
+                        
+                    </div>
+                </div>
+            </div>
+        </header>

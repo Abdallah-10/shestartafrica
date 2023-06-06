@@ -1,0 +1,242 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}SheStartsAfrica{% endblock %}
+
+{% block body %}
+	<div class="main-wrapper">
+		{{ include('espace_prive/_header.html.twig')}}
+		<section class="section-box">
+			<div class="container-sst-f">
+                <div class="row mt--120 ventur-row">
+                    <div class="col-lg-6 ">
+                        <h1 class="f-venture">Ventures</h1>
+                    </div>
+                    <div class="col-md-6 text-end"><a class="add-vent" href="/espace/prive/add">Add new venture <span class="plus-icon">+</span></a></div>
+                </div>
+            </div>
+        </section>
+        <div class="edu-course-area eduvibe-home-one-course course-wrapper-1 bg-color-white">
+            <div class="wrapper">
+                <div class="container-sst-f eduvibe-animated-shape">
+                    <div class="row g-5 mt--10">
+                     {% for venture in ventures %}
+        
+                        <!-- Start Single Card  -->
+                        <div class="col-12 col-sm-12 col-xl-4 col-md-6" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
+                            <div class="edu-card card-type-2 ventures radius-small">
+                                <div class="inner">
+                                    <div class="thumbnail">
+                                        <a href="/espace/prive/venture/{{ venture.slug }}">
+                                            <img class="w-100" src="{{ asset('assets/images/ventures/')}}{{ venture.cover }}" alt="Course Meta">
+                                        </a>
+                                    </div>
+                                    <div class="content ventures">
+                                        <div class="card-top">
+                                            <div class="author-meta">
+                                                <div class="author-thumb">
+                                                    <a href="/espace/prive/venture/{{ venture.slug }}">
+                                                        <span class="venture-title">{{ venture.title }}</span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h6 class="desc-vent">{{ venture.description|slice(0, 80) ~ '...' }}</h6>
+                                        <ul class="edu-meta meta-01">
+                                            <li><img class="icon icon-vent" src="{{ asset('assets/images/icons/tag.png') }}">
+												{{ venture.sector }}</li>
+                                            <li><img class="icon icon-vent" src="{{ asset('assets/images/icons/symbol.png') }}">{{ venture.country }}</li>
+                                        </ul>
+                                        <ul class="edu-meta meta-01">
+                                            <li><img class="icon icon-vent" src="{{ asset('assets/images/icons/calendar.png') }}">
+												{{ venture.years|date('Y') }}</li>
+                                            <li><img class="icon icon-vent" src="{{ asset('assets/images/icons/group.png') }}">{{ venture.founder }} Founders</li>
+                                        </ul>
+                                        <div class="card-bottom">
+                                            <div class="price-list price-style-01">
+                                                <div class="price current-price"><a href="/espace/prive/venture/{{ venture.slug }}">View more</a></div>
+                                                <div class="price old-price">
+                                               
+                                                <a href="{{ venture.facebook }}" class="{% if venture.facebook is empty %}griser{% endif %}"><i class="icon-Fb"></i></a>
+                                                <a href="{{ venture.linkedin }}" class="{% if venture.linkedin is empty %}griser{% endif %}"><i class="icon-linkedin"></i></a></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                          {% endfor %}
+                        <!-- End Single Card  -->
+                    </div>
+                    <div class="mt--80 text-center"><a class="browse-all" href="/espace/prive/venture">Browse all</a></div>
+                </div>
+            </div>
+        </div>
+         <section class="section-box">
+			<div class="container-sst-f">
+                <div class="row mt--80 ventur-row">
+                    <div class="col-lg-12 ">
+                        <h1 class="f-venture">Trainings</h1>
+                    </div>
+                </div>
+            </div>
+        </section> 
+        <div class="edu-course-area eduvibe-home-one-course course-wrapper-1 bg-color-white">
+            <div class="wrapper">
+                <div class="container-sst-f eduvibe-animated-shape">
+                    <div class="row g-5 mt--10">
+                    {% for training in trainings %}
+                       <div class="col-12 col-sm-12 col-xl-4 col-md-6" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
+                            <div class="edu-card card-type-2 training radius-small">
+                                <div class="inner">
+                                    <div class="thumbnail">
+                                        <a href="/espace/prive/training/{{ training.slug }}">
+                                            <img class="w-100" src="{{ asset('assets/images/trainings/')}}{{ training.cover }}" alt="Course Meta">
+                                        </a>
+                                    </div>
+                                    <div class="top-position status-group left-top">
+                                            <span class="sst-categ">
+                                                {{ training.category }}</span>
+                                        </div>
+                                    <div class="content training">
+                                     <ul class="edu-meta meta-01 pb-4">
+                                            <li><img class="icon icon-vent" src="{{ asset('assets/images/icons/calendar.png') }}">
+												{{ training.dateStart|date('d/m/Y') }}</li>
+                                            <li><img class="icon icon-vent" src="{{ asset('assets/images/icons/group.png') }}">{{ training.session }} sessions</li>
+                                        </ul>
+                                        <div class="card-top">
+                                            <div class="author-meta">
+                                                <div class="author-thumb">
+                                                    <a href="">
+                                                        <span class="venture-title">{{ training.title }}</span>
+                                                    </a>
+                                                </div>
+                                            </div>                                            
+                                        </div>
+                                        <h6 class="desc-vent">{{ training.description|slice(0, 70) ~ '...' }}</h6>   
+                                      </div>
+                                      <div class="card-bottom traing">
+                                            <div class="price-list price-style-01">
+                                                <div class="price current-training"><a href="/espace/prive/training/{{ training.slug }}">Read more</a></div>
+                                                <div class="cat-traing">
+                                                    <span class="text-cat">{{ training.type }}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                        <!-- End Single Card  -->
+                    </div>
+                    <div class="mt--80 text-center"><a class="browse-all" href="/espace/prive/training">Browse all</a></div>
+                </div>
+            </div>
+        </div>
+        <section class="section-box">
+			<div class="container-sst">
+                <div class="row mt--80 ventur-row">
+                    <div class="col-lg-12 ">
+                        <h1 class="f-venture">Investors & Partners</h1>
+                    </div>
+                </div>
+            </div>
+        </section> 
+        <div class="edu-course-area eduvibe-home-one-course course-wrapper-1 bg-color-white">
+            <div class="wrapper">
+                <div class="container-sst-f eduvibe-animated-shape">
+                    <div class="row g-5 mt--10">
+                      {% for investor in investors %} 
+                        <div class="col-12 col-sm-12 col-xl-4 col-md-6" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
+                            <div class="edu-card card-type-2 investor radius-small">
+                                <div class="inner">
+                                    <div class="thumbnail row">
+                                        <div class="col-md-6">
+										<span class="invest">
+										Business angel</span>
+                                            <span class="invest" style="color:red;">{{ investor.type }}</span>
+                                             <a href="{{ investor.linkedin }}"><i class="icon-linkedin"></i></a>
+                                        </div>
+                                        <div class="col-md-6"><a href="">
+                                            <img class="w-100" style="height: 100px;object-fit: contain;" src="{{ asset('assets/images/investors/') }}{{ investor.logo }}" alt="Course Meta">
+                                        </a></div>
+                                    </div>
+                                    <div class="content investor">
+                                        <div class="card-top">
+                                            <div class="author-meta">
+                                                <div class="author-thumb">
+                                                    <a href="">
+                                                        <span class="desc-invest">{{ investor.title}}</span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                        <p  class="desc-investor">{{ investor.description|slice(0, 40) ~ '...'}}
+                                                </p>
+                                        <ul class="edu-meta meta-01">
+                                            <li><img class="icon icon-vent" src="{{ asset('assets/images/icons/tag.png') }}">
+												{{ investor.field }}</li>
+                                            <li><img class="icon icon-vent" src="{{ asset('assets/images/icons/symbol.png') }}">{{ investor.country}}</li>
+                                        </ul>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                       <!-- End Single Card  -->
+                    </div>
+                    <div class="mt--80 text-center"><a class="browse-all" href="/espace/prive/investor">Browse all</a></div>
+
+                </div>
+            </div>
+            <section class="section-box">
+                <div class="container-sst">
+                    <div class="row mt--80 ventur-row">
+                        <div class="col-lg-12 ">
+                            <h1 class="f-venture">Mentors</h1>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <div class="edu-course-area eduvibe-home-one-course course-wrapper-1 bg-color-white">
+                <div class="wrapper mentors">
+                    <div class="container-sst-f eduvibe-animated-shape">
+                        <div class="row g-5 mt--10">
+                        {% for mentor in mentors %} 
+                          <div class="col-12 col-sm-12 col-xl-4 col-md-6" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
+                            <div class="card-box mentors">
+                                <div class="inner mentors">
+                                    <div class="client-infom mentors row" >
+                                        <div class="thumbnail mentors col-md-4 p-0">
+                                            <img src="{{ asset('assets/images/mentors/') }}{{ mentor.cover }}" alt="Client Images">
+                                        </div>
+                                        <div class="content mentors col-md-8 ">
+                                            <h6 class="title-mentor">{{ mentor.name }}</h6>
+                                            <span class="designation-mentor">{{ mentor.occupation }}</span>
+                                           
+                                            <div class="price-list price-style-01">
+                                                <div class="price old-price mt-4">                                              
+                                                <a href="{{ mentor.linkedin }}" target="_blank"><i class="icon-linkedin mentor"></i></a>
+                                                <a href="{{ mentor.mail }}"><i class="icon-Mail"></i></a>
+                                                <a href="/espace/prive/mentors/{{ mentor.slug }}" class="link-mentor">Learn More <i class="icon-arrow-right-line-right ms-3"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> 
+                                                              
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                        <div class="mt--80 text-center"><a class="browse-all" href="/espace/prive/mentors">Browse all</a></div>
+                        </div>
+                    </div>                            
+                </div>
+            </div>
+
+            
+		{{ include('home/_partenaires.html.twig')}}
+        {{ include('espace_prive/_footer.html.twig')}}
+    </div>
+{% endblock %}

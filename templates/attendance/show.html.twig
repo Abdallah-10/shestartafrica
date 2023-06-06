@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}She Starts Africa{% endblock %}
+
+{% block body %}
+    <h1>Attendance</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ attendance.id }}</td>
+            </tr>
+            <tr>
+                <th>Username</th>
+                <td>{{ attendance.username }}</td>
+            </tr>
+            <tr>
+                <th>Userlastname</th>
+                <td>{{ attendance.userlastname }}</td>
+            </tr>
+            <tr>
+                <th>Useremail</th>
+                <td>{{ attendance.useremail }}</td>
+            </tr>
+            <tr>
+                <th>Position</th>
+                <td>{{ attendance.position }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ attendance.date ? attendance.date|join(', ') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Attendancy</th>
+                <td>{{ attendance.attendancy ? attendance.attendancy|join(', ') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Note</th>
+                <td>{{ attendance.note }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_attendance_index') }}">back to list</a>
+
+    <a href="{{ path('app_attendance_edit', {'id': attendance.id}) }}">edit</a>
+
+    {{ include('attendance/_delete_form.html.twig') }}
+{% endblock %}

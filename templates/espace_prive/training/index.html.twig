@@ -1,0 +1,179 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	<div class="main-wrapper">
+		{{ include('espace_prive/_header.html.twig')}}
+		<section class="section-box-2">
+        <div class="container-sst">
+          <div class="banner-hero banner-image-single">
+          <img class="img-banner" src="{{ asset('assets/images/banner/mentors.png') }}" alt="jobbox"><a class="btn-editor" href="#"></a></div>
+          <div class="box-company-profile">
+            <div class="row mt-10">
+              <div class="col-lg-9 col-md-9">
+                <h5 class="f-18">Our trainings</h5>
+              </div>
+              <div class="col-lg-12 col-md-12 text-end">
+                      <ol class="edu-breadcrumb d-flex justify-content-end liststyle mr-4">
+                            <li class="breadcrumb-item"><a href="/">Home</a></li>
+                            <li class="separator"><i class="ri-arrow-drop-right-line"></i></li>
+                             <li class="breadcrumb-item active" aria-current="page"> Training</li>
+                        </ol>
+                </div>
+            </div>
+          </div>
+        </div>
+      </section>
+        <div class="edu-course-area eduvibe-home-one-course course-wrapper-1 bg-color-white">
+            <div class="wrapper">
+                <div class="container-sst-f eduvibe-animated-shape">
+                    <div class="row g-5 mt--50">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-10 align-items-center" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
+                           <h6 class="titl-mentor">Our trainings</h6>
+                           <p class="des-mentor">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 
+                           et dolore magna aliqua. Ut enim ad minim veniam,
+                           quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 
+                           et dolore magna aliqua. Ut enim ad minim veniam,
+                           quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                        </div>
+                     <div class="shape-image shape-image-1" style="position: absolute;"><img src="{{ asset('assets/images/shapes/shape-04-01.png')}}" alt="Shape Thumb"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+         
+        <div class="edu-course-area eduvibe-home-one-course course-wrapper-1 bg-color-white">
+            <div class="wrapper">
+                <div class="container-sst-f eduvibe-animated-shape">
+                    <div class="row g-5 mt--10">
+                        <div class="col-lg-12">
+                        <div class="">
+                            <ul class="edu-course-tab nav nav-tabs" id="myTab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link active" id="overview-tab" data-bs-toggle="tab" data-bs-target="#overview" type="button" role="tab" aria-controls="overview" aria-selected="true">All</button>
+                                </li>
+                                {% for categ in category %}
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="{{ categ }}-tab" data-bs-toggle="tab" data-bs-target="#{{ categ }}" type="button" role="tab" aria-controls="curriculum" aria-selected="false">{{ categ }}</button>
+                                </li>
+                                {% endfor %}
+                            </ul>
+
+                            <div class="tab-content" id="myTabContent">
+                                <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview-tab">
+                                    <div class="course-tab-content">
+                                        <div class="row g-5 mt--10">
+                                          
+                                        {% for training in trainings %}
+                                           <div class="col-12 col-sm-12 col-xl-4 col-md-6" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
+                                                <div class="edu-card card-type-2 training radius-small">
+                                                    <div class="inner">
+                                                        <div class="thumbnail">
+                                                            <a href="/espace/prive/training/{{ training.slug }}">
+                                                                <img class="w-100" src="{{ asset('assets/images/trainings/')}}{{ training.cover }}" alt="Course Meta">
+                                                            </a>
+                                                        </div>
+                                                        <div class="top-position status-group left-top">
+                                                                <span class="sst-categ">{{ training.category }}</span>
+                                                            </div>
+                                                        <div class="content training">
+                                                        <ul class="edu-meta meta-01 pb-4">
+                                                                <li><img class="icon icon-vent" src="{{ asset('assets/images/icons/calendar.png') }}">
+                                                                    {{ training.dateStart|date('d/m/Y') }}</li>
+                                                                <li><img class="icon icon-vent" src="{{ asset('assets/images/icons/group.png') }}">{{ training.session }} sessions</li>
+                                                            </ul>
+                                                            <div class="card-top">
+                                                                <div class="author-meta">
+                                                                    <div class="author-thumb">
+                                                                        <a href="/espace/prive/training/{{ training.slug }}">
+                                                                            <span class="venture-title">{{ training.title }}</span>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>                                            
+                                                            </div>
+                                                            <h6 class="desc-vent">{{ training.description|slice(0, 70) ~ '...' }}</h6>   
+                                                        </div>
+                                                        <div class="card-bottom traing">
+                                                                <div class="price-list price-style-01">
+                                                                    <div class="price current-training"><a href="/espace/prive/training/{{ training.slug }}">Read more</a></div>
+                                                                    <div class="cat-traing">
+                                                                        <span class="text-cat">{{ training.type }}</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                         {% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
+                                {% for categ in category %}
+                                    <div class="tab-pane fade" id="{{ categ }}" role="tabpanel" aria-labelledby="{{ categ }}-tab">
+                                        <div class="course-tab-content">
+                                            <div class="edu-accordion-02" id="accordionExample1">
+                                               {% for training in trainings %}
+                                               {% if (training.category == categ) %}
+                                                   <div class="col-12 col-sm-12 col-xl-4 col-md-6" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
+                                                        <div class="edu-card card-type-2 training radius-small">
+                                                            <div class="inner">
+                                                                <div class="thumbnail">
+                                                                    <a href="">
+                                                                        <img class="w-100" src="{{ asset('assets/images/trainings/')}}{{ training.cover }}" alt="Course Meta">
+                                                                    </a>
+                                                                </div>
+                                                                <div class="top-position status-group left-top">
+                                                                        <span class="sst-categ">
+                                                                            {{ training.category }}</span>
+                                                                    </div>
+                                                                <div class="content training">
+                                                                <ul class="edu-meta meta-01 pb-4">
+                                                                        <li><img class="icon icon-vent" src="{{ asset('assets/images/icons/calendar.png') }}">
+                                                                            {{ training.dateStart|date('d/m/Y') }}</li>
+                                                                        <li><img class="icon icon-vent" src="{{ asset('assets/images/icons/group.png') }}">{{ training.session }} sessions</li>
+                                                                    </ul>
+                                                                    <div class="card-top">
+                                                                        <div class="author-meta">
+                                                                            <div class="author-thumb">
+                                                                                <a href="">
+                                                                                    <span class="venture-title">{{ training.title }}</span>
+                                                                                </a>
+                                                                            </div>
+                                                                        </div>                                            
+                                                                    </div>
+                                                                    <h6 class="desc-vent">{{ training.description|slice(0, 70) ~ '...' }}</h6>   
+                                                                </div>
+                                                                <div class="card-bottom traing">
+                                                                        <div class="price-list price-style-01">
+                                                                            <div class="price current-training"><a href="#">Read more</a></div>
+                                                                            <div class="cat-traing">
+                                                                                <span class="text-cat">{{ training.type }}</span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                         
+                                              {% endif %}   
+                                                 
+                                         {% endfor %} 
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                               
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="mt--80 text-center"><a class="browse-all" href="/">Browse all </a></div>
+                </div>
+            </div>
+        </div>
+
+            
+	{{ include('home/_partenaires.html.twig')}}
+        {{ include('espace_prive/_footer.html.twig')}}
+    </div>
+{% endblock %}

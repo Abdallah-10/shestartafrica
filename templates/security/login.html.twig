@@ -1,0 +1,81 @@
+
+{% extends 'base.html.twig' %}
+
+{% block title %}SheStartsAfrica{% endblock %}
+
+{% block body %}
+<div class="main-wrapper">
+    {{ include('home/_header.html.twig')}}
+  
+
+       <div class="edu-product-description edu-section-gapBottom pt--120 bg-color-white" id="user">
+            <div class="container">
+                <div class="row">
+                <div class="col-lg-1"></div>
+                    <div class="col-lg-10">
+                        <ul class="product-description-nav nav nav-tabs" id="myTab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button  class="nav-link "  type="button" ><a href="/register#user" >Create an account</a></button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button  class="nav-link active" id="review-tab" data-bs-toggle="tab" data-bs-target="#review" type="button" role="tab" aria-controls="review" aria-selected="false">I already have an account</button>
+                            </li>
+                        </ul>
+
+                        <div class="tab-content" id="myTabContent">
+                       
+                            <div class="product-description-content tab-pane active" id="review" role="tabpanel" aria-labelledby="review-tab">
+                                <div class="row">
+                                <div class="col-xs-1 col-sm-1 col-md-2"></div>
+                                 <div class="col-xs-10 col-sm-10 col-md-8 security">
+                                  <form method="post">
+                                    {% if error %}
+                                        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                                    {% endif %}
+
+                                    {% if app.user %}
+                                        <div class="mb-3">
+                                            You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Sign out</a>
+                                        </div>
+                                    {% endif %}
+
+                                    <h1 class="h3 mb-3 font-weight-normal reg-titre">Login</h1>
+                                    <br><br>
+                                    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" placeholder="Email" autocomplete="email" required autofocus>
+                                    <br><input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" autocomplete="current-password" required><br>
+                                    <input type="hidden" name="_csrf_token"
+                                        value="{{ csrf_token('authenticate') }}">
+                                     <button type="submit" name="submit" class="btn btn-contact">Login <i class="icon-arrow-right-line-right"></i></button>
+                                    <div class="input-box"><a href="/reset-password" class="lost-password">Lost your password?</a></div>
+                                </form>
+                             </div>
+                             </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    <style>
+    input[type="checkbox"] {
+      opacity: 1;
+      position: absolute;
+      width: 13px;
+      margin-top: 3px;
+    }
+    label.required {
+    padding: 10px;
+    }
+    button.nav-link a {
+    color: #000;
+}
+.input-box {
+    padding: 12px;
+    /* color: #e71117; */
+    text-decoration: underline;
+}
+    </style>
+{% endblock %}

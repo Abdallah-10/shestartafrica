@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}SheStartsAfrica{% endblock %}
+
+{% block body %}
+<div class="main-wrapper">
+    {{ include('home/_header.html.twig')}}
+        <section class="section-box-2">
+            <div class="container-sst">
+            <div class="banner-hero banner-image-single">
+            <img class="img-banner" src="{{ asset('assets/images/banner/femmeec.png') }}" alt="jobbox"><a class="btn-editor" href="#"></a></div>
+            <div class="box-company-profile">
+                <div class="row mt-10">
+                <div class="col-lg-9 col-md-9">
+                    <h5 class="f-18">Get in touch with us</h5>
+                </div>
+                <div class="col-lg-12 col-md-12 text-end">
+                        <ol class="edu-breadcrumb d-flex justify-content-end liststyle mr-4">
+                                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                                <li class="separator"><i class="ri-arrow-drop-right-line"></i></li>
+                                <li class="breadcrumb-item active" aria-current="page">Get in touch with us</li>
+                            </ol>
+                    </div>
+                </div>
+              </div>
+            </div>
+        </section>
+        <div class="container" style="margin-top: 8%;">
+
+        {% for message in app.flashes('success') %}
+                    <div class="alert alert-success">
+                        {{ message }}
+					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endfor %}
+
+            <div class="row">
+                <div class="col-md-6 card-contact">
+                    {{ form_start(form) }}
+                       {{ form_row(form) }}
+                       <button type="submit" name="submit" class="btn btn-contact">Send <i class="icon-arrow-right-line-right"></i></button>
+                    {{ form_end(form) }}
+                 </div>
+                 <div class="col-md-6 right-contact">
+                        <p class="titre-contact">Or email us:</p>
+                        <p class="titre-contact">contact@shestartsafrica.com</p>
+                 </div>
+            </div>
+        </div>
+<style>
+label.required {
+    display: none;
+}
+.alert.alert-success {
+    padding: 18px;
+    margin-bottom: 35px;
+}
+button.btn-close {
+    position: absolute;
+    right: 15px;
+}
+</style>
+    {{ include('home/_partenaires.html.twig')}}
+    {{ include('home/_footer.html.twig')}}
+{% endblock %}

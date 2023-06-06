@@ -1,0 +1,65 @@
+
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+<div class="main-wrapper">
+    {{ include('home/_header.html.twig')}}
+  
+
+       <div class="edu-product-description edu-section-gapBottom pt--120 bg-color-white" id="user">
+            <div class="container">
+                <div class="row">
+                <div class="col-lg-1"></div>
+                    <div class="col-lg-10">
+                        <ul class="product-description-nav nav nav-tabs" id="myTab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="desc-tab" data-bs-toggle="tab" data-bs-target="#desc" type="button" role="tab" aria-controls="desc" aria-selected="true">Create an account</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button  class="nav-link" type="button"><a href="/login#user">I already have an account</a></button>
+                            </li>
+                        </ul>
+
+                        <div class="tab-content" id="myTabContent">
+                            <div class=" product-description-content tab-pane fade show active" id="desc" role="tabpanel" aria-labelledby="desc-tab">
+                               <div class="row">
+                                <div class="col-xs-1 col-sm-1 col-md-2"></div>
+                                 <div class="col-xs-10 col-sm-10 col-md-8 security">
+                                 {% for flash_error in app.flashes('verify_email_error') %}
+                                    <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+                                 {% endfor %}
+
+                                 <h1 class="reg-titre">Create account</h1>
+                              
+                                  {{ form_start(registrationForm) }}
+                                    {{ form_row(registrationForm, {'label':false}) }}
+                                    <button type="submit" name="submit" class="btn btn-contact">Sign up <i class="icon-arrow-right-line-right"></i></button>
+                                  {{ form_end(registrationForm) }}
+                              </div>
+                             </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+  
+
+   <style>
+    input[type="checkbox"] {
+      opacity: 1;
+      position: absolute;
+      width: 13px;
+      margin-top: 3px;
+    }
+    label.required {
+    padding: 10px;
+    }
+    button.nav-link a {
+    color: #000;
+}
+    </style>
+{% endblock %}
